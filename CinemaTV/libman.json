@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "bootbox.js@6.0.0",
+      "destination": "wwwroot/bootbox.js/",
+      "files": [
+        "bootbox.min.js"
+      ]
+    },
+    {
+      "library": "animate.css@4.1.1",
+      "destination": "wwwroot/animate.css/",
+      "files": [
+        "animate.min.css"
+      ]
+    },
+    {
+      "library": "datepicker@1.0.10",
+      "destination": "wwwroot/datepicker/",
+      "files": [
+        "datepicker.min.js",
+        "datepicker.min.css"
+      ]
+    },
+    {
+      "library": "bootstrap-datepicker@1.10.0",
+      "destination": "wwwroot/bootstrap-datepicker/"
+    }
+  ]
+}

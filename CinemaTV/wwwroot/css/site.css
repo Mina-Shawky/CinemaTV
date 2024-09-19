@@ -1,0 +1,133 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.field-validation-error {
+    font-size: 14px;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+.poster {
+    min-height: 236px;
+    background-position: center;
+    background-size: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.poster:hover {
+        background-size: 125%;
+        transition: all 0.3s ease-in-out;
+}
+
+
+
+.imdb_rate {
+    position: absolute;
+    bottom: 12%;
+    left: 7%;
+    z-index: 10;
+    padding: 3px 8px;
+    color: #130439;
+    line-height: 1;
+    border-radius: 10px;
+    background: #ffdd35;
+}
+.year{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    padding: 3px 8px;
+    color: #130438;
+    line-height: 1;
+    border-radius: 10px;
+    background: #ffdd35;
+}
+.quality {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    z-index: 10;
+    padding: 3px 8px;
+    color: #130438;
+    line-height: 1;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+
+.datepicker-panel{
+    background: white;
+    color: black;
+    font-size: medium;
+    top:-100%;
+}
+
+.datepicker-panel li {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.datepicker-panel li:hover {
+            background-color: #333;
+            cursor: pointer;
+}
+.ipc {
+    display: flex;
+    max-height: 2.4em;
+    overflow: hidden;
+    border: none;
+    padding-left: .75rem;
+    position: relative;
+}
+.ipc:before {
+        background: #6f42c1;
+        border-radius: var(--ipt-cornerRadius);
+        content: "";
+        margin-left: -.75rem;
+        align-self: flex-start;
+        position: absolute;
+        height: 100%;
+        width: 4px;
+    }
+.ipcdiv {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: .03125em;
+    text-transform: none;
+    -webkit-font-smoothing: auto;
+    font-smooth: auto;
+    border: none;
+    display: block;
+    padding-top: .5rem;
+    color:dimgray;
+}

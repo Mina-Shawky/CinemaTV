@@ -1,0 +1,80 @@
+﻿@model AddNewMovieViewModel
+@{
+    ViewData["Title"] = "Add Movie";
+    SelectList items = new SelectList(ViewBag.Geners, "Id", "GenreName");
+}
+<h2><i class="bi bi-file-earmark-plus"></i> Create Movie</h2>
+<hr />
+
+<section class="row justify-content-between">
+    <div class="col-md-5">
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="text-muted" asp-for="Title"></label>
+                <input type="text" class="form-control" asp-for="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-muted" asp-for="Genre"></label>
+                <select class="form-control" asp-for="Genre" asp-items="items">
+                    <option value="0">--Select Genre--</option>
+                </select>
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group w-50">
+                <label class="text-muted" asp-for="Year"></label>
+                <input type="number" class="form-control" asp-for="Year" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group w-50">
+                <label class="text-muted" asp-for="Rate"></label>
+                <input type="number" class="form-control" asp-for="Rate" />
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-muted" asp-for="StoryLine"></label>
+                <textarea asp-for="StoryLine" class="form-control"></textarea>
+                <span asp-validation-for="StoryLine" class="text-danger"></span>
+            </div>
+            <div class="custom-file mt-3" id="ww">
+                <input type="file" class="custom-file-input" asp-for="Image" accept="image/*" />
+                <label class="custom-file-label" asp-for="Image"></label>
+                <div><small id="emailHelp" class="form-text text-muted">Only .jpg, .png, .png files are allowed</small></div>
+                <span asp-validation-for="Image" class="text-danger d_block"></span>
+            </div>
+            <div class="custom-file mt-3" id="ww">
+                <input type="file" class="custom-file-input" asp-for="Video" />
+                <label class="custom-file-label" asp-for="Video"></label>
+                <div><small id="emailHelp" class="form-text text-muted">Only .mp4, .webm files are allowed</small></div>
+                <span asp-validation-for="Video" class="text-danger d_block"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3"><i class="bi bi-save"></i> Save</button>
+            <a asp-action="Index" class="btn btn-secondary mt-3"><i class="bi bi-x-circle"></i> Cancel</a>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div id="IdPoster" >
+            <img src="" class="cover-preview d-none img-thumbnail" alt="Poster" style="width:370px;height:450px;" />
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('#Image').on('change', function() {
+                $('.cover-preview').attr('src', window.URL.createObjectURL(this.files[0])).removeClass('d-none');
+            });
+                $('#Year').datepicker({
+                    format: 'yyyy',
+                    viewMode: 'years',
+                    minViewMode: 'years',
+                    autoclose: true,
+                    startDate: new Date('1970-01-01'),
+                    endDate: new Date(),
+                });
+        });
+    </script>
+}
