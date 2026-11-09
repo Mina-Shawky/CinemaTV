@@ -92,7 +92,7 @@ Run the project using the appropriate command or development environment for you
 <table>
   <tr>
     <td align="center">
-      <img src="screenshots/1.png" width="250" alt="CinemaTV Screenshot 1">
+      <img src="screenshots/1.PNG" width="250" alt="CinemaTV Screenshot 1">
     </td>
     <td align="center">
       <img src="screenshots/2.png" width="250" alt="CinemaTV Screenshot 2">
