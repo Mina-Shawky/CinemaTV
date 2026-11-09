@@ -87,12 +87,33 @@ Run the project using the appropriate command or development environment for you
 
 ## 📸 Screenshots
 
-Add screenshots of your application here to showcase its interface and functionality.
+<div align="center">
 
-<!-- Example:
-![CinemaTV Home Page](screenshots/home.png)
-![Add Movie](screenshots/add-movie.png)
--->
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/1.png" width="250" alt="CinemaTV Screenshot 1">
+    </td>
+    <td align="center">
+      <img src="screenshots/2.png" width="250" alt="CinemaTV Screenshot 2">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/3.png" width="250" alt="CinemaTV Screenshot 3">
+    </td>
+    <td align="center">
+      <img src="screenshots/4.png" width="250" alt="CinemaTV Screenshot 4">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="screenshots/5.png" width="250" alt="CinemaTV Screenshot 5">
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ## 👨‍💻 Author
 
