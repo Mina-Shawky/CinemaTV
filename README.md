@@ -7,7 +7,11 @@
 **A Simple and Interactive Movie Management Application**
 
 <p>
-  Manage your movie collection with ease through a clean interface, smooth animations, and interactive notifications.
+  Manage your movie collection with ease through a clean interface, smooth animations, AJAX-powered deletion, and interactive notifications.
+</p>
+
+<p>
+  <a href="https://github.com/Mina-Shawky/CinemaTV">GitHub Repository</a>
 </p>
 
 </div>
@@ -20,7 +24,7 @@
 
 The application provides essential CRUD operations, enabling users to add, view, edit, and delete movies.
 
-It also focuses on improving the user experience through animated interactions and Toast notifications.
+It also focuses on improving the user experience through AJAX requests, animated interactions, and Toast notifications.
 
 ## ✨ Features
 
@@ -30,6 +34,12 @@ It also focuses on improving the user experience through animated interactions a
 - **Read:** Display and view movie information.
 - **Update:** Edit existing movie details.
 - **Delete:** Remove movies from the collection.
+
+### ⚡ AJAX Functionality
+
+- Delete movies using AJAX without reloading the entire page.
+- Smooth and interactive deletion experience.
+- Dynamically update the interface after successful deletion.
 
 ### 🔔 Interactive Notifications
 
@@ -51,18 +61,16 @@ It also focuses on improving the user experience through animated interactions a
 
 ## 🛠️ Technologies & Libraries
 
-- **CRUD Operations** – Managing movie records.
+- **AJAX** – Asynchronous requests and dynamic page updates.
 - **Toastr** – Displaying interactive toast notifications.
 - **CSS Animations** – Adding smooth visual effects and transitions.
-
-> Add your actual programming language, framework, database, and other libraries here to complete the technology stack.
 
 ## ⚙️ Getting Started
 
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/Mina-Shawky/CinemaTV.git
 ```
 
 ### 2. Open the Project
@@ -86,19 +94,13 @@ Add screenshots of your application here to showcase its interface and functiona
 ![Add Movie](screenshots/add-movie.png)
 -->
 
-## 🚀 Future Improvements
-
-- Movie search functionality.
-- Filter movies by category or genre.
-- Movie details page.
-- Movie ratings and reviews.
-- Improved responsive design.
-
 ## 👨‍💻 Author
 
 **Mina Shawky**
 
 GitHub: [@Mina-Shawky](https://github.com/Mina-Shawky)
+
+**Project Repository:** [CinemaTV](https://github.com/Mina-Shawky/CinemaTV)
 
 ---
 
