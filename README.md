@@ -92,23 +92,23 @@ Run the project using the appropriate command or development environment for you
 <table>
   <tr>
     <td align="center">
-      <img src="screenshots/1.PNG" width="250" alt="CinemaTV Screenshot 1">
+      <img src="screenshots/1.PNG" width="275" alt="CinemaTV Screenshot 1">
     </td>
     <td align="center">
-      <img src="screenshots/2.png" width="250" alt="CinemaTV Screenshot 2">
+      <img src="screenshots/2.PNG" width="275" alt="CinemaTV Screenshot 2">
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="screenshots/3.png" width="250" alt="CinemaTV Screenshot 3">
+      <img src="screenshots/3.PNG" width="275" alt="CinemaTV Screenshot 3">
     </td>
     <td align="center">
-      <img src="screenshots/4.png" width="250" alt="CinemaTV Screenshot 4">
+      <img src="screenshots/4.PNG" width="275" alt="CinemaTV Screenshot 4">
     </td>
   </tr>
   <tr>
     <td colspan="2" align="center">
-      <img src="screenshots/5.png" width="250" alt="CinemaTV Screenshot 5">
+      <img src="screenshots/5.PNG" width="275" alt="CinemaTV Screenshot 5">
     </td>
   </tr>
 </table>
