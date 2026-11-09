@@ -1,0 +1,116 @@
+﻿@using CinemaTV.ViewModel
+@model MovieViewModel
+@{
+    ViewData["Title"] = "Create Movie";
+    SelectList items = new SelectList(ViewBag.geners, "Id", "Name");
+}
+<h2 class="movies-title"><i class="bi bi-film"></i>Create Movie</h2>
+
+<hr class="movies-divider" />
+<section class="">
+    <div class="row movie-create-layout">
+    <div class="col-md-5">
+        <form asp-action="Create" asp-controller="Movie" method="post" enctype="multipart/form-data">
+        <div>
+            <label asp-for="Title" class="form-label poster-label mt-4"></label>
+            <input type="text" asp-for="Title" class="form-control">
+            <span id="emailHelp" class="form-text text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div>
+            <label asp-for="GenreId" class="form-label poster-label mt-4"></label>
+            <select asp-for="GenreId" asp-items="items" class="form-control">
+                <option value="0">-- Select Genre --</option>
+            </select>
+            <span id="emailHelp" class="form-text text-danger" asp-validation-for="GenreId"></span>
+        </div>
+        <div class="w-50">
+            <label asp-for="Year" class="form-label poster-label mt-4"></label>
+            <input  asp-for="Year" class="form-control" value="@(Model?.Year == 0 ? "" : Model?.Year.ToString())" >
+            <span class="form-text text-danger" asp-validation-for="Year"></span>
+        </div>
+        <div class="w-50">
+            <label asp-for="Rate" class="form-label poster-label mt-4"></label>
+            <input asp-for="Rate" class="form-control" value="@(Model?.Rate == 0 ? "" : Model?.Rate.ToString())">
+            <span id="emailHelp" class="form-text text-danger" asp-validation-for="Rate"></span>
+        </div>
+        <div >
+            <label asp-for="StoryLine" class="form-label poster-label mt-4"></label>
+            <textarea asp-for="StoryLine" class="form-control" maxlength="3000" rows="5"></textarea>
+            <span id="emailHelp" class="form-text text-danger" asp-validation-for="StoryLine"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Image" class="form-label poster-label mt-4">Movie Poster</label>
+            <div class="poster-upload">
+            <input type="file" asp-for="Image" class="form-control poster-input" accept="image/*" />
+                <div class="poster-hint">
+                <i class="bi bi-cloud-arrow-up"></i>
+                <span>Choose your movie poster</span>
+             </div>
+            </div>
+                <span asp-validation-for="Image" class="text-danger small"></span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-add"><i class="bi bi-check-circle-fill"></i>Save</button>
+            <a class="btn btn-cancel" asp-action="Index"><i class="bi bi-x-circle-fill"></i>Cancel </a>
+        </div>
+        </form>
+    </div>
+    <div class="col-md-5 poster-preview-column">
+        <div class="poster-preview-card">
+            <div class="preview-title">
+                <i class="bi bi-image"></i>Movie Preview
+            </div>
+
+            <div id="IdPoster" class="poster-preview-container">
+                <div class="poster-placeholder">
+                    <i class="bi bi-camera-reels"></i><p>Movie Poster Preview</p>
+                    <span>Your image will appear here</span>
+                </div>
+
+                <img src="" class="cover-preview d-none" alt="Movie Poster Preview" />
+           </div>
+        </div>
+    </div>
+
+</div>
+
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    <script>
+    document.getElementById("Image").addEventListener("change", function () {
+    const preview = document.querySelector(".cover-preview");
+    const placeholder = document.querySelector(".poster-placeholder");
+
+    if (this.files && this.files[0]) {
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.classList.remove("d-none");
+            placeholder.classList.add("d-none");
+        };
+
+        reader.readAsDataURL(this.files[0]);
+    }
+    else {
+        preview.src = "";
+        preview.classList.add("d-none");
+        placeholder.classList.remove("d-none");
+    }
+});
+
+    $(document).ready(function () {
+    $('#Year').datepicker({
+        format: 'yyyy',
+        viewMode: 'years',
+        minViewMode: 'years',
+        autoclose: true,
+        startDate: new Date('1970-01-01'),
+        endDate: new Date()
+    });
+});
+        
+    </script>
+}

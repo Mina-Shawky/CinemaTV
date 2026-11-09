@@ -1,0 +1,165 @@
+﻿@model IEnumerable<Movie>
+@{
+    ViewData["Title"] = "Movies";
+}
+<h2 class="movies-title"><i class="bi bi-film"></i>Movies</h2>
+
+<hr class="movies-divider" />
+
+<a class="btn btn-add" asp-action="Create"><i class="bi bi-plus-circle-dotted"></i> Add Movie</a>
+
+<div class="mt-4">
+    @if (!Model.Any())
+    {
+        <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong><i class="bi bi-exclamation-triangle"></i>Oh snap!</strong>  No Movies Found!!.
+        </div>
+    }
+    else
+    {
+
+        
+        <div class="container movie-list-container">
+            <div class="row g-4">
+
+                @foreach (var i in Model)
+                {
+                    <div class="col-12">
+                        <div class="movie-card">
+
+                            <!-- Poster -->
+                            <div class="movie-poster">
+                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(i.Poster)"
+                                     alt="@i.Title" />
+                            </div>
+
+                            <!-- Movie Content -->
+                            <div class="movie-content">
+
+                                <div class="movie-info">
+
+                                    <div class="movie-heading">
+                                        <div>
+                                            <h4>@i.Title</h4>
+                                            <span class="movie-year">
+                                                <i class="bi bi-calendar3"></i>
+                                                @i.Year
+                                            </span>
+                                        </div>
+
+                                        <div class="movie-rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <span>@i.Rate.ToString("0.0")</span>
+                                            <small>/ 10</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="movie-description">
+                                        <span class="description-label">
+                                            <i class="bi bi-card-text"></i>
+                                            Storyline
+                                        </span>
+
+                                        <p>
+                                            @(i.StoryLine.Length > 500
+                                                ? $"{i.StoryLine.Substring(0, 500)}..."
+                                                : i.StoryLine)
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="movie-actions">
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@i.Id"
+                                       class="movie-btn details-btn">
+                                        <i class="bi bi-eye-fill"></i>
+                                        Details
+                                    </a>
+
+                                    <a asp-action="Update"
+                                       asp-route-id="@i.Id"
+                                       class="movie-btn edit-btn">
+                                        <i class="bi bi-pencil-square"></i>
+                                        Edit
+                                    </a>
+
+                                    <a href="javascript:;"
+                                       class="movie-btn delete-btn js-delete"
+                                       data-id="@i.Id">
+                                        <i class="bi bi-trash3-fill"></i>
+                                        Delete
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('.js-delete').on('click', function (e) {
+                e.preventDefault();
+
+                var btn = $(this);
+                var movieId = btn.data('id');
+
+                bootbox.confirm({
+                    message: 'Are you sure that you need to delete this movie?',
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-outline-danger'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-secondary'
+                        }
+                    },
+                    callback: function (result) {
+
+                        if (result) {
+                            $.ajax({
+                                url: '/Movie/Delete/' + movieId,
+                                type: 'POST',
+
+                                success: function (response) {
+                                    var movieContainer = btn.closest('.col-12');
+
+                                    movieContainer.addClass('animate__animated animate__zoomOutDown');
+
+                                    setTimeout(function () {
+                                        movieContainer.remove();
+                                    }, 1000);
+
+                                    toastr.success('Movie removed successfully!');
+                                },
+
+                                error: function (xhr) {
+                                    toastr.error('Something went wrong!');
+                                    console.log(xhr.responseText);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+}
+    </script>
+}

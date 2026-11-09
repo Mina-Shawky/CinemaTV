@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="home-movies-container">
+
+    <div class="home-heading">
+    <div class="heading-icon">
+        <i class="bi bi-camera-reels-fill"></i>
+    </div>
+
+    <div class="heading-content">
+        <h2>Top <span>Movies</span></h2>
+        <p>Discover the best movies selected for you</p>
+    </div>
+
+    <div class="heading-decoration">
+        <i class="bi bi-stars"></i>
+        <span>CINEMATV COLLECTION</span>
+    </div>
+</div>
+
+<div class="home-heading-divider"></div>
+
+    <div class="row g-4 mt-4">
+
+        @foreach (var i in Model)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+                <div class="home-movie-card">
+
+                    <div class="home-movie-poster">
+
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(i.Poster)"
+                             alt="@i.Title" />
+
+                        <div class="home-movie-overlay">
+
+                            <div class="movie-badges">
+
+                                <span class="imdb_rate">
+                                    <i class="bi bi-star-fill"></i>
+                                    @i.Rate.ToString("0.0")
+                                </span>
+
+                                <span class="year">@i.Year</span>
+
+                                <span class="quality">1080p HD</span>
+
+                            </div>
+
+                            <a asp-action="Details"
+                               asp-controller="Movie"
+                               asp-route-id="@i.Id"
+                               class="home-view-btn">
+
+                                <i class="bi bi-display-fill"></i>
+                                View Details
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="home-movie-info">
+                        <h5>@i.Title</h5>
+                        <span>
+                            <i class="bi bi-camera-reels-fill"></i>
+                            CinemaTV Collection
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

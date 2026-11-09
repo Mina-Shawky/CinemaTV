@@ -1,0 +1,158 @@
+﻿@using CinemaTV.ViewModel
+@model UpdateMovieViewModel
+@{
+    ViewData["Title"] = "Update Movie "+Model.Title;
+    SelectList items = new SelectList(ViewBag.geners, "Id", "Name");
+}
+<h2 class="movies-title"><i class="bi bi-pencil"></i> Update Movie</h2>
+
+<hr class="movies-divider" />
+<section>
+    <div class="row movie-create-layout g-4">
+
+        <!-- Movie Form -->
+        <div class="col-md-5">
+            <form asp-action="Update"
+                  asp-controller="Movie"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="Id" />
+
+                <div>
+                    <label asp-for="Title" class="form-label poster-label mt-4"></label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="form-text text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="GenreId" class="form-label poster-label mt-4"></label>
+                    <select asp-for="GenreId" asp-items="items" class="form-control">
+                        <option value="0">-- Select Genre --</option>
+                    </select>
+                    <span asp-validation-for="GenreId" class="form-text text-danger"></span>
+                </div>
+
+                <div class="w-50">
+                    <label asp-for="Year" class="form-label poster-label mt-4"></label>
+                    <input asp-for="Year" class="form-control"
+                           value="@(Model?.Year == 0 ? "" : Model?.Year.ToString())" />
+                    <span asp-validation-for="Year" class="form-text text-danger"></span>
+                </div>
+
+                <div class="w-50">
+                    <label asp-for="Rate" class="form-label poster-label mt-4"></label>
+                    <input asp-for="Rate" class="form-control"
+                           value="@(Model?.Rate == 0 ? "" : Model?.Rate.ToString())" />
+                    <span asp-validation-for="Rate" class="form-text text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="StoryLine" class="form-label poster-label mt-4"></label>
+                    <textarea asp-for="StoryLine" class="form-control"
+                              maxlength="3000" rows="5"></textarea>
+                    <span asp-validation-for="StoryLine" class="form-text text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Image" class="form-label poster-label mt-4">Movie Poster</label>
+
+                    <div class="poster-upload">
+                        <input type="file" asp-for="Image"
+                               class="form-control poster-input"
+                               accept="image/*" />
+
+                        <div class="poster-hint">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                            <span>Choose your movie poster</span>
+                        </div>
+                    </div>
+
+                    <span asp-validation-for="Image" class="text-danger small"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-add">
+                        <i class="bi bi-check-circle-fill"></i> Save
+                    </button>
+
+                    <a class="btn btn-cancel" asp-action="Index">
+                        <i class="bi bi-x-circle-fill"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Poster Preview -->
+        <div class="col-md-6 poster-preview-column">
+            <div class="poster-preview-card">
+
+                <h5 class="preview-title">Movie Poster Preview</h5>
+
+                <div id="IdPoster" class="poster-preview-container">
+
+                    @if (Model.Poster != null && Model.Poster.Length > 0)
+                    {
+                        <div class="poster-placeholder d-none">
+                            <i class="bi bi-camera-reels"></i>
+                            <p>Movie Poster Preview</p>
+                            <span>Your image will appear here</span>
+                        </div>
+
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Poster)"
+                             class="cover-preview"
+                             alt="Movie Poster Preview" />
+                    }
+                    else
+                    {
+                        <div class="poster-placeholder">
+                            <i class="bi bi-camera-reels"></i>
+                            <p>Movie Poster Preview</p>
+                            <span>Your image will appear here</span>
+                        </div>
+
+                        <img src="" class="cover-preview d-none"
+                             alt="Movie Poster Preview" />
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    <script>
+        document.getElementById("Image").addEventListener("change", function () {
+
+            const preview = document.querySelector(".cover-preview");
+            const placeholder = document.querySelector(".poster-placeholder");
+
+            if (this.files && this.files[0]) {
+
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove("d-none");
+                    placeholder.classList.add("d-none");
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+            $(document).ready(function () {
+            $('#Year').datepicker({
+                format: 'yyyy',
+                viewMode: 'years',
+                minViewMode: 'years',
+                autoclose: true,
+                startDate: new Date('1970-01-01'),
+                endDate: new Date()
+            });
+        });
+
+    </script>
+}
